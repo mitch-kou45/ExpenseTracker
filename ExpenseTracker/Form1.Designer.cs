@@ -35,9 +35,9 @@
             numAmount = new NumericUpDown();
             dtpDate = new DateTimePicker();
             btnAdd = new Button();
-            dataGridViewExpense = new DataGridView();
+            dataGridViewExpenses = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)numAmount).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewExpense).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewExpenses).BeginInit();
             SuspendLayout();
             // 
             // lblDesc
@@ -48,7 +48,6 @@
             lblDesc.Size = new Size(70, 15);
             lblDesc.TabIndex = 0;
             lblDesc.Text = "Description:\r\n";
-            lblDesc.Click += label1_Click;
             // 
             // txtDesc
             // 
@@ -66,7 +65,6 @@
             lblAmount.Size = new Size(54, 15);
             lblAmount.TabIndex = 2;
             lblAmount.Text = "Amount:";
-            lblAmount.Click += label2_Click;
             // 
             // lblDate
             // 
@@ -76,7 +74,6 @@
             lblDate.Size = new Size(34, 15);
             lblDate.TabIndex = 3;
             lblDate.Text = "Date:";
-            lblDate.Click += label3_Click;
             // 
             // numAmount
             // 
@@ -91,7 +88,6 @@
             dtpDate.Name = "dtpDate";
             dtpDate.Size = new Size(199, 23);
             dtpDate.TabIndex = 5;
-            dtpDate.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // btnAdd
             // 
@@ -102,22 +98,21 @@
             btnAdd.Text = "Add Expense";
             btnAdd.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewExpense
+            // dataGridViewExpenses
             // 
-            dataGridViewExpense.AllowUserToOrderColumns = true;
-            dataGridViewExpense.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewExpense.Location = new Point(12, 250);
-            dataGridViewExpense.Name = "dataGridViewExpense";
-            dataGridViewExpense.Size = new Size(394, 211);
-            dataGridViewExpense.TabIndex = 7;
-            dataGridViewExpense.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewExpenses.AllowUserToOrderColumns = true;
+            dataGridViewExpenses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewExpenses.Location = new Point(12, 250);
+            dataGridViewExpenses.Name = "dataGridViewExpenses";
+            dataGridViewExpenses.Size = new Size(394, 211);
+            dataGridViewExpenses.TabIndex = 7;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(430, 488);
-            Controls.Add(dataGridViewExpense);
+            Controls.Add(dataGridViewExpenses);
             Controls.Add(btnAdd);
             Controls.Add(dtpDate);
             Controls.Add(numAmount);
@@ -129,7 +124,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)numAmount).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewExpense).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewExpenses).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -143,6 +138,6 @@
         private NumericUpDown numAmount;
         private DateTimePicker dtpDate;
         private Button btnAdd;
-        private DataGridView dataGridViewExpense;
+        private DataGridView dataGridViewExpenses;
     }
 }

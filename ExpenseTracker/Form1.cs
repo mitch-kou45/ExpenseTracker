@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace ExpenseTracker
 {
     public partial class Form1 : Form
@@ -7,34 +10,49 @@ namespace ExpenseTracker
             InitializeComponent();
         }
 
+        // Runs when the form is first loaded
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            DatabaseHelper.InitializeDatabase();
+            LoadExpenses();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        // Button click event for adding an expense
+        private void btnAddExpense_Click(object sender, EventArgs e)
         {
+            var expense = new Expense
+            {
+                Description = txtDesc.Text.Trim(),
+                Amount = (double)numAmount.Value,
+                Date = dtpDate.Value.Date
+            };
 
+            DatabaseHelper.AddExpense(expense);
+            LoadExpenses();
+            ClearForm();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        // Loads all expenses into the DataGridView
+        private void LoadExpenses()
         {
+            var expenses = DatabaseHelper.GetAllExpenses();
+            dataGridViewExpenses.DataSource = null;
+            dataGridViewExpenses.DataSource = expenses;
 
+            // Optional: format DataGridView
+            dataGridViewExpenses.Columns["Id"].Visible = false;
+            dataGridViewExpenses.Columns["Description"].Width = 200;
+            dataGridViewExpenses.Columns["Amount"].DefaultCellStyle.Format = "C2";
+            dataGridViewExpenses.Columns["Date"].DefaultCellStyle.Format = "yyyy-MM-dd";
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        // Resets input controls
+        private void ClearForm()
         {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+            txtDesc.Text = "";
+            numAmount.Value = 0;
+            dtpDate.Value = DateTime.Today;
         }
     }
 }
+
